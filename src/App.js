@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/App.css";
+import { MainLayOut } from "./layouts/layouts";
+import { Route, Routes } from "react-router-dom";
+import { NoticiasList, Noticia, NewNoticia } from "./components/comps";
+import { Inicio, About, Error404 } from "./pages/pages";
+import { NoticiasProvider } from "./context/noticiasContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NoticiasProvider>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainLayOut />}>
+            <Route index element={<Inicio />} />
+            <Route path="noticias">
+              <Route index element={<NoticiasList />} />
+              <Route path=":id" element={<Noticia />} />
+              <Route path="new" element={<NewNoticia />} />
+            </Route>
+            <Route path="about" element={<About />} />
+            <Route path="*" element={<Error404 />} />
+          </Route>
+        </Routes>
+      </div>
+    </NoticiasProvider>
   );
 }
 
