@@ -4,12 +4,11 @@ import { Loader, NoticiaCard } from "./comps";
 
 export const NoticiasList = () => {
   const { noticias } = useNoticia();
-  console.log(noticias)
   return (
     <main className="noticias-main">
-      {noticias ? (
+      {noticias.length!==0 ? (
         noticias.map((el, index) => 
-          <NoticiaCard data={el} />
+          <NoticiaCard key={index} data={el} />
         )
       ) : (
         <Loader />

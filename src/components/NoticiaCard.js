@@ -9,9 +9,9 @@ export const NoticiaCard = ({data}) => {
     }
     return (
     <div className='noticias-main-card' onClick={handleClick}>
-        <img className='noticias-main-img' src={img_main.url} alt={subtitle} />
-        <h2 className='noticias-main-h2'> {title} </h2>
-        <p className='noticias-main-p'> {description} </p>
+        <img className='noticias-main-card-img' src={img_main.url} alt={subtitle} />
+        <h2 className='noticias-main-card-h2'> {title} </h2>
+        <p className='noticias-main-card-p'> {description} </p>
     </div>
   )
 }

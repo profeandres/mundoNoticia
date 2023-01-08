@@ -22,7 +22,7 @@ export const Carousel = () => {
 
   return (
     <div className="slideshow-container">
-      {!noticias ? (
+      {noticias.length===0 ? (
         <Loader />
       ) : (
         noticias.map((el, index) => (

@@ -19,7 +19,7 @@ export const NoticiasProvider = ({children}) => {
  }, [])
     return (
     <noticiasContext.Provider
-    value={{noticias}}
+    value={{noticias, setNoticias}}
     >
         {children}
     </noticiasContext.Provider>
