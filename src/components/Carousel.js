@@ -1,18 +1,42 @@
-import React from 'react'
-import { useNoticia } from '../context/noticiasContext'
-import {CarouselSlide} from './comps'
-import Loader from './Loader';
+import React, { useState } from "react";
+import { useNoticia } from "../context/noticiasContext";
+import { CarouselSlide } from "./comps";
+import Loader from "./Loader";
+import "../styles/carousel.css";
+import {GrLinkNext, GrLinkPrevious} from 'react-icons/gr'
+
 
 export const Carousel = () => {
-    const {noticias} = useNoticia();
-    console.log(noticias);
-    console.log(process.env)
-    return (
-    <div className='slideshow-container'>
-        <p> {process.env.REACT_APP_API_URI}</p>
-        {!noticias ? <Loader/>: noticias.map((el,index)=>
-            <CarouselSlide data={el} key={index}/> 
-        )}
+  const { noticias } = useNoticia();
+  const [show, setshow] = useState(0);
+  
+  const plusSlide=(inc)=>{
+    if(show+inc===noticias.length){
+        setshow(0)
+    }else if(show+inc<0){
+        setshow(noticias.length-1)
+    }else{
+        setshow(show+inc)
+    }
+  }
+
+  return (
+    <div className="slideshow-container">
+      {!noticias ? (
+        <Loader />
+      ) : (
+        noticias.map((el, index) => (
+          <CarouselSlide
+            index={index}
+            data={el}
+            key={index}
+            length={noticias.length}
+            show={show}
+          />
+        ))  
+      )}
+      <button className='slideshow-btn prev' onClick={()=>plusSlide(-1)}><GrLinkNext/></button>
+      <button className='slideshow-btn next' onClick={()=>plusSlide(1)}><GrLinkPrevious/></button>
     </div>
-  )
-}
+  );
+};

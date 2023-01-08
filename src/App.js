@@ -1,5 +1,5 @@
 import "./styles/App.css";
-import { MainLayOut } from "./layouts/layouts";
+import { MainLayOut, NoticiasLayOut } from "./layouts/layouts";
 import { Route, Routes } from "react-router-dom";
 import { NoticiasList, Noticia, NewNoticia } from "./components/comps";
 import { Inicio, About, Error404 } from "./pages/pages";
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayOut />}>
             <Route index element={<Inicio />} />
-            <Route path="noticias">
+            <Route path="noticias" element={<NoticiasLayOut/>}>
               <Route index element={<NoticiasList />} />
               <Route path=":id" element={<Noticia />} />
               <Route path="new" element={<NewNoticia />} />

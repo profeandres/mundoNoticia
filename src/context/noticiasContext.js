@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getNoticiasRequest } from '../api/noticiasApi';
 
 const noticiasContext = createContext();
@@ -17,7 +17,6 @@ export const NoticiasProvider = ({children}) => {
     setNoticias(res.data)
    })()
  }, [])
- 
     return (
     <noticiasContext.Provider
     value={{noticias}}
