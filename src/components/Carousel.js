@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNoticia } from "../context/noticiasContext";
 import { CarouselSlide } from "./comps";
-import Loader from "./Loader";
+import {Loader} from "./comps";
 import "../styles/carousel.css";
 import {GrLinkNext, GrLinkPrevious} from 'react-icons/gr'
 

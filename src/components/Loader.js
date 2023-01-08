@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/loader.css'
 
-const Loader = () => {
+export const Loader = () => {
     console.log("si sirve");
   return (
     <div className="lds-spinner">
@@ -21,4 +21,3 @@ const Loader = () => {
   );
 };
 
-export default Loader;

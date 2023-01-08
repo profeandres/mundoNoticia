@@ -34,17 +34,19 @@ font-family: 'Montserrat', sans-serif;
     position: absolute;
     bottom:0;
     width: 100%;
-    background: #a4ba78a9;
+    background: #a4ba7867;
 }
 
 .slide-h2{
     font-size: 30px;
     margin: 0;
+    padding: 0 4px;
     width: fit-content;
 }
 
 .slide-p{
     font-size: 15px;
+    padding: 0 8px;
 }
 .fade{
     display: none;
@@ -53,14 +55,19 @@ font-family: 'Montserrat', sans-serif;
 .slideshow-btn{
     position: absolute;
     top:50%;
-    background: #a4ba78a9;
+    background: #a4ba7867;
     border: none;
     padding: 5px 10px;
     font-size: 20px;
+    border-radius: 50%;
 }
 
 .slideshow-btn>svg{
     vertical-align:middle;
+}
+.slideshow-btn:hover{
+    cursor: pointer;
+
 }
 
 .prev{

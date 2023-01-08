@@ -4,8 +4,8 @@ import {TfiLayoutSlider} from 'react-icons/tfi'
 
 export const Inicio = () => {
   return (
-    <div>
-      <h1>Noticias del momento <TfiLayoutSlider/></h1>
+    <div className='inicio'>
+      <h1 className='inicio-h1'>Noticias del momento <TfiLayoutSlider/></h1>
         <Carousel/>
     </div>
   )
