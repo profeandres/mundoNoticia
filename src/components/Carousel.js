@@ -35,8 +35,8 @@ export const Carousel = () => {
           />
         ))  
       )}
-      <button className='slideshow-btn prev' onClick={()=>plusSlide(-1)}><GrLinkNext/></button>
-      <button className='slideshow-btn next' onClick={()=>plusSlide(1)}><GrLinkPrevious/></button>
+      <button className='slideshow-btn prev' onClick={()=>plusSlide(-1)}><GrLinkPrevious/></button>
+      <button className='slideshow-btn next' onClick={()=>plusSlide(1)}><GrLinkNext/></button>
     </div>
   );
 };
