@@ -1,6 +1,7 @@
 export {Footer} from './Footer'
 export {Header} from './Header'
 export {NewNoticia} from './NewNoticia'
+export {NewNoticia2} from './NewNoticia2'
 export {Noticia} from './Noticia'
 export {NoticiasList} from './NoticiasList'
 export {Carousel} from './Carousel'
