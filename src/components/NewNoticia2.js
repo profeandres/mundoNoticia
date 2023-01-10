@@ -1,31 +1,41 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import React, { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
+import { useNoticia } from "../context/noticiasContext";
 
 export const NewNoticia2 = () => {
-  const [description, setDescription] = useState('')
-    const publicar = (values) => {
-    console.log(values);
-  };
-
+  const navigate = useNavigate();
+  const { createNoticia } = useNoticia();
+  const [description, setDescription] = useState("");
+  const [blur, setBlur] = useState(false);
   const handleBlur = () => {
-    let $description = document.getElementsByClassName('newNoticia-imgCon');
-    console.log(description);
-    console.log($description)
-};
+    if (!blur) setBlur(true);
+    let $description = document.getElementsByClassName("newNoticia-imgCon");
+    let error = document.createElement("p");
+    error.innerText =
+      "La description es muy corta  debe tener más de 200 carácteres.";
+    error.classList = "errorMessage";
+    error.id = "eliminar";
+    if (description.length < 200 && !document.getElementById("eliminar")) {
+      $description[0].insertAdjacentElement("afterbegin", error);
+    } else if (
+      description.length >= 200 &&
+      document.getElementById("eliminar")
+    ) {
+      document.getElementById("eliminar").remove();
+    }
+  };
   const validar = (values) => {
     const errors = {};
-    console.log(values);
     if (values.title.length < 5)
       errors.title = "El título es muy corto debe tener más de 5 carácteres.";
     if (values.subtitle.length < 10)
       errors.subtitle =
         "El subtítulo es muy corto debe tener más de 10 carácteres.";
-    if (values.description.length < 200)
-      errors.description =
-        "La description es muy corta  debe tener más de 200 carácteres.";
     return errors;
   };
   return (
@@ -38,10 +48,18 @@ export const NewNoticia2 = () => {
           description: "",
           img_main: undefined,
         }}
-        onSubmit={publicar}
+        onSubmit={async (values, actions) => {
+          await createNoticia(values);
+          actions.resetForm();
+          actions.setSubmitting(false);
+          toast.success("Successfully created!", {
+            duration: 2000,
+          });
+          navigate("/");
+        }}
         validate={validar}
       >
-        {({ setFieldValue, handleSubmit, isSubmitting, values }) => (
+        {({ setFieldValue, handleSubmit, isSubmitting, values, actions }) => (
           <Form onSubmit={handleSubmit} className="newNoticia-form">
             <div className="sub-ti">
               <label htmlFor="">Titulo de la noticia</label>
@@ -64,9 +82,10 @@ export const NewNoticia2 = () => {
               theme="snow"
               value={values.description}
               onChange={(e) => {
-                setFieldValue("description", e)
-                setDescription(e)
-            }}
+                setFieldValue("description", e);
+                setDescription(e);
+                if (blur) handleBlur();
+              }}
               onBlur={handleBlur}
             />
             <div id="neWNoticia-imgCon" className="newNoticia-imgCon">
@@ -80,16 +99,26 @@ export const NewNoticia2 = () => {
                 }}
               />
             </div>
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <AiOutlineLoading3Quarters className="noticia-uploading" />
-              ) : (
-                "Crear Noticia"
-              )}
-            </button>
+            <div className="newNoticias-submit">
+              <button
+                className="newNoticias-submit-btn"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <AiOutlineLoading3Quarters className="noticia-submitting" />
+                ) : (
+                  "Crear Noticia"
+                )}
+              </button>
+              <button className='newNoticias-reset-btn' type="reset" onClick={() => actions.resetForm()}>
+                Limpiar
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
+      <Toaster/>
     </div>
   );
 };

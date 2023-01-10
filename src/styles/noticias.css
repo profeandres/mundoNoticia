@@ -133,6 +133,7 @@
 .newNoticia-imgCon {
   display: flex;
   width: 85%;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   margin: auto;
@@ -152,6 +153,11 @@
   width: 85%;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+#eliminar{
+    display: block;
+    width: 100%;
 }
 
 .quill {
@@ -199,4 +205,13 @@
 
 #inputFade {
   display: none;
+}
+
+.newNoticias-submit{
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+
 }
