@@ -1,20 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useNoticia } from "../context/noticiasContext";
 
 export const NoticiasNavbar = () => {
   const navigate = useNavigate();
-  const { noticias, setNoticias } = useNoticia();
-  const handleBorrar = () => {
-    setNoticias([]);
-  };
 
   const handleNew = () => {
     navigate("/noticias/new");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(noticias);
   };
   return (
     <div className="noticias-navbar">

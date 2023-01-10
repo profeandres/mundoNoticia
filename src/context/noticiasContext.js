@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getNoticiasRequest } from '../api/noticiasApi';
+import { createNoticiaRequest, getNoticiasRequest } from '../api/noticiasApi';
 
 const noticiasContext = createContext();
 
@@ -17,9 +17,18 @@ export const NoticiasProvider = ({children}) => {
     setNoticias(res.data)
    })()
  }, [])
+
+ const createNoticia = async (noticia) =>{
+  try {
+    const res = await createNoticiaRequest(noticia);
+    setNoticias([...noticias,res.data])
+  } catch (error) {
+    console.log(error)
+  }
+ }
     return (
     <noticiasContext.Provider
-    value={{noticias, setNoticias}}
+    value={{noticias, setNoticias, createNoticia}}
     >
         {children}
     </noticiasContext.Provider>

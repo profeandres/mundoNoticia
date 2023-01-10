@@ -96,14 +96,97 @@
 }
 
 .newNoticia{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.newNoticia>form{
-    width: 80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    background: #a4ba78;
+    margin: 10px 20px;
+    padding: 10px;
+    font-family: "Montserrat";
 }
 
+.newNoticia-h1{
+    margin: 0 auto;
+}
+.sub-ti{
+    margin: auto;
+    margin-bottom: 17px;
+    width: 85%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:20px 30px 20px 30px ;
+    gap: 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.img_main-container{
+    display: flex;
+    width: 85%;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.img_main-container>input{
+    margin-left: 30px;
+}
+
+.ti-desc{
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+
+.quill{
+    width: 85%;
+    margin: 0 auto;
+    border: rgb(118, 118, 118) 1px solid;
+    box-sizing: border-box;
+    color: black;
+}
+.quill:hover{
+    border: rgb(79,79,79) 1px solid;
+}
+
+.ql-toolbar, .ql-snow{
+    color: black
+}
+
+.ql-picker-label{
+    color: black
+}
+.ql-picker-label:hover{
+    color: #e4e404
+}
+
+.ql-toolbar{
+    border: none !important;
+    border-bottom: rgb(118, 118, 118) 1px solid !important;
+    background: #e4e455;
+}
+
+.ql-toolbar:hover{
+    border-bottom: rgb(79,79,79) 1px solid !important;
+}
+
+.ql-editor{
+    border:none !important;
+    background: #fff;
+}
+
+.ql-blank{
+    border:none !important;
+    background: #fff;
+}
+
+#inputFade{
+    display: none;
+}

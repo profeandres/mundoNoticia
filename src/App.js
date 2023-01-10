@@ -1,3 +1,4 @@
+import React from 'react'
 import "./styles/App.css";
 import { MainLayOut, NoticiasLayOut } from "./layouts/layouts";
 import { Route, Routes } from "react-router-dom";
